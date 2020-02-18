@@ -39,8 +39,7 @@ sales <- sales %>%
 
 sales <- sales %>%
   select(Order_Date_Day, Order_Price_Total, productid, customerid) %>%
-  rename(orderdate = Order_Date_Day, sales = Order_Price_Total) 
-
+  rename(orderdate = Order_Date_Day, sales = Order_Price_Total)
 drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, port = 5432, host = "bronto.ewi.utwente.nl",
                  dbname = "dab_ds19202a_40", user = "dab_ds19202a_40", password = "RlDVlyabzTIJvgHX",
