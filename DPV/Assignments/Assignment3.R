@@ -29,6 +29,9 @@ data0 <- data0 %>%
 data0$Status <- data0$Status %>%
   replace_na("NotReturned")
 
+data0$Profit <- gsub(",","",data0$Profit)
+data0$Profit <- as.double(data0$Profit)
+
 #Create Product table
 Product <- data0 %>%
   select(`Product Name`, `Product Category`, `Product Sub-Category`) %>%
@@ -104,4 +107,6 @@ dbGetQuery(con,
            "SELECT table_name FROM information_schema.tables
             WHERE table_schema=’ass3’") ## to get the tables from schema ass2
 str(dbReadTable(con, c("ass3", "Sales")))
+
+dbDisconnect(con) 
   
